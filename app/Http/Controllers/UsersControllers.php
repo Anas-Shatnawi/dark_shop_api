@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\ResetEmail;
 use App\Models\User;
 use Hash;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\Rules\Password;
 
@@ -87,13 +89,13 @@ class UsersControllers extends Controller
         $user = User::find($request->userId);
 
         if (!$user) {
-            return response([
+            return response()->json([
                 'status' => 404,
                 'message' => 'user not found',
             ]);
         }
 
-        return response([
+        return response()->json([
             'status' => 200,
             'message' => 'user detals',
             'data' => $user,
@@ -129,7 +131,7 @@ class UsersControllers extends Controller
 
         $user->save();
 
-        return response([
+        return response()->json([
             'status' => 200,
             'message' => 'user detals',
             'data' => $user,
@@ -139,12 +141,13 @@ class UsersControllers extends Controller
     public function getStores()
     {
         $stores = User::whereRoleIs('store')->orderBy('id', 'DESC')->limit(100)->get();
-        
-        return response([
+
+        return response()->json([
             'status' => 200,
             'message' => 'all stores',
             'data' => $stores,
         ]);
 
     }
+
 }
