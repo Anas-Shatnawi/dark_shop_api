@@ -28,5 +28,15 @@ Route::middleware(['auth:sanctum'])->group(function () {
     // ~~~~~ stores routes ~~~~~
     Route::get('/get-stores', [App\Http\Controllers\UsersControllers::class,'getStores']);
     // ~~~~~ end of stores routes ~~~~~
+    
+    // ~~~~~ products routes ~~~~~
+    Route::get('get-products',[App\Http\Controllers\ProductController::class,'getProducts']);
+    Route::get('get-user-product',[App\Http\Controllers\ProductController::class,'getUserProducts']);
+    Route::get('get-product-by-category',[App\Http\Controllers\ProductController::class,'getProductsByCategory']);
+    Route::get('product-details',[App\Http\Controllers\ProductController::class,'getProductDetails']);
+    Route::post('add-product',[App\Http\Controllers\ProductController::class,'addProduct']);
+    Route::post('update-product',[App\Http\Controllers\ProductController::class,'updateProduct']);
+    Route::delete('delete-product',[App\Http\Controllers\ProductController::class,'deleteProduct']);
+    // ~~~~~ end of products routes ~~~~~
 
 });

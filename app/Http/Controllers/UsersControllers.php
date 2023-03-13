@@ -35,6 +35,7 @@ class UsersControllers extends Controller
             'email' => $request->email,
             'phone' => $request->phone,
             'password' => Hash::make($request->password),
+            'user_image' => 'image|mimes:jpeg,png,jpg|max:2048',
         ]);
 
         if ($request->file('user_image')) {
