@@ -232,4 +232,61 @@ class ProductController extends Controller
             'message' => 'product deleted successfully',
         ]);
     }
+
+    public function getSortFilter(Request $request){
+        $validator = Validator::make($request->all(),[
+            'sort' => 'numeric',
+            'minPrice' => 'numeric',
+            'maxPrice' => 'numeric',
+            'categoryId' => 'numeric|exists:categories,id',
+            'userId' => 'numeric|exists:users,id',
+        ]);
+
+        if ($validator->fails()) {
+            return response()->json([
+                'status' => 400,
+                'errors' => $validator->errors() 
+            ]);
+        }
+
+        $products = Product::all();
+        // sorts
+        if ($request->sort == 1) {
+            $products = Product::orderBy('price','DESC');
+        }
+        if ($request->sort == 2) {
+            $products = Product::orderBy('price','ASC');
+        }
+        if ($request->sort == 3) {
+            $products = Product::orderBy('id','DESC');
+        }
+
+        // filters
+        // pricing filters
+        if ($request->minPrice && $request->maxPrice) {
+            $products = $products->whereBetween('price',[$request->minPrice,$request->maxPrice]);
+        }elseif ($request->minPrice) {
+            $products = $products->where('price','>=',$request->minPrice);
+        }elseif ($request->maxPrice) {
+            $products = $products->where('price','<=',$request->maxPrice);
+        }
+        
+        //category filter
+        if ($request->categoryId) {
+            $products = $products->where('category_id',$request->category)->get();
+        }
+
+        //user filter
+        if ($request->categoryId) {
+            $products = $products->where('user_id',$request->category)->get();
+        }
+
+        $products = $products->get();
+        
+        return response()->json([
+            'status' => 200,
+            'message' => 'filter and sort api successfully called',
+            'data' => $products,
+        ]);
+    }
 }

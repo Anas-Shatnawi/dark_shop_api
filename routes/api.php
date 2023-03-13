@@ -38,9 +38,14 @@ Route::middleware(['auth:sanctum'])->group(function () {
     Route::post('update-product',[App\Http\Controllers\ProductController::class,'updateProduct']);
     Route::delete('delete-product',[App\Http\Controllers\ProductController::class,'deleteProduct']);
     // ~~~~~ end of products routes ~~~~~
-    
+
+    // ~~~~~ sort routes ~~~~~
+    Route::get('products-sort-filter',[App\Http\Controllers\ProductController::class,'getSortFilter']);
+
+
     // ~~~~~ categories routes ~~~~~
     Route::get('get-categories',[App\Http\Controllers\CategoriesController::class,'getCategories']);
+    // ~~~~~ end of categories routes ~~~~~
 
 
 });
