@@ -41,6 +41,11 @@ Route::middleware(['auth:sanctum'])->group(function () {
 
     // ~~~~~ sort routes ~~~~~
     Route::get('products-sort-filter',[App\Http\Controllers\ProductController::class,'getSortFilter']);
+    
+    // ~~~~~ comments routes ~~~~~
+    Route::post('add-comment',[App\Http\Controllers\CommentController::class,'addComment']);
+    Route::delete('delete-comment',[App\Http\Controllers\CommentController::class,'deleteComment']);
+    Route::get('get-product-comments',[App\Http\Controllers\CommentController::class,'getProductComment']);
 
 
     // ~~~~~ categories routes ~~~~~
