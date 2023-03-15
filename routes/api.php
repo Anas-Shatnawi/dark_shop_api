@@ -41,11 +41,18 @@ Route::middleware(['auth:sanctum'])->group(function () {
 
     // ~~~~~ sort routes ~~~~~
     Route::get('products-sort-filter',[App\Http\Controllers\ProductController::class,'getSortFilter']);
+    // ~~~~~ end of sort routes ~~~~~
     
     // ~~~~~ comments routes ~~~~~
     Route::post('add-comment',[App\Http\Controllers\CommentController::class,'addComment']);
     Route::delete('delete-comment',[App\Http\Controllers\CommentController::class,'deleteComment']);
     Route::get('get-product-comments',[App\Http\Controllers\CommentController::class,'getProductComment']);
+    // ~~~~~ end of comments routes ~~~~~
+    
+    // ~~~~~ likes routes ~~~~~
+    Route::post('add-delete-like',[App\Http\Controllers\LikesController::class,'addDeleteLike']);
+    Route::get('get-product-likes',[App\Http\Controllers\LikesController::class,'getProductLikes']);
+    // ~~~~~ end of likes routes ~~~~~
 
 
     // ~~~~~ categories routes ~~~~~
