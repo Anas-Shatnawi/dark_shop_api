@@ -53,6 +53,12 @@ Route::middleware(['auth:sanctum'])->group(function () {
     Route::post('add-delete-like',[App\Http\Controllers\LikesController::class,'addDeleteLike']);
     Route::get('get-product-likes',[App\Http\Controllers\LikesController::class,'getProductLikes']);
     // ~~~~~ end of likes routes ~~~~~
+    
+    
+    // ~~~~~ wish list routes ~~~~~
+    Route::post('add-remove-wish-list',[App\Http\Controllers\WishListController::class,'addRemoveWishList']);
+    Route::get('get-user-wish-list',[App\Http\Controllers\WishListController::class,'geUsertWishList']);
+    // ~~~~~ end of wish list routes ~~~~~
 
 
     // ~~~~~ categories routes ~~~~~
