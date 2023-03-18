@@ -59,6 +59,11 @@ Route::middleware(['auth:sanctum'])->group(function () {
     Route::post('add-remove-wish-list',[App\Http\Controllers\WishListController::class,'addRemoveWishList']);
     Route::get('get-user-wish-list',[App\Http\Controllers\WishListController::class,'geUsertWishList']);
     // ~~~~~ end of wish list routes ~~~~~
+    
+    // ~~~~~ Favorites routes ~~~~~
+    Route::post('add-remove-favorites',[App\Http\Controllers\FavoritesController::class,'addRemoveFavorites']);
+    Route::get('get-user-favorites',[App\Http\Controllers\FavoritesController::class,'geUsertFavorites']);
+    // ~~~~~ end of Favorites routes ~~~~~
 
 
     // ~~~~~ categories routes ~~~~~
