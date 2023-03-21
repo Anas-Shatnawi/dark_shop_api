@@ -64,11 +64,16 @@ Route::middleware(['auth:sanctum'])->group(function () {
     Route::post('add-remove-favorites',[App\Http\Controllers\FavoritesController::class,'addRemoveFavorites']);
     Route::get('get-user-favorites',[App\Http\Controllers\FavoritesController::class,'geUsertFavorites']);
     // ~~~~~ end of Favorites routes ~~~~~
-
+    
+    // ~~~~~ Cart routes ~~~~~
+    Route::post('add-to-cart',[App\Http\Controllers\CartController::class,'addToCart']);
+    Route::get('get-user-cart',[App\Http\Controllers\CartController::class,'getUserCart']);
+    Route::DELETE('remove-from-user-cart',[App\Http\Controllers\CartController::class,'removeFromUserCart']);
+    Route::DELETE('empty-user-cart',[App\Http\Controllers\CartController::class,'emptyUserCart']);
+    // ~~~~~ end of Cart routes ~~~~~
 
     // ~~~~~ categories routes ~~~~~
     Route::get('get-categories',[App\Http\Controllers\CategoriesController::class,'getCategories']);
     // ~~~~~ end of categories routes ~~~~~
-
 
 });
