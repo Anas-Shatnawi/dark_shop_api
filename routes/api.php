@@ -71,6 +71,11 @@ Route::middleware(['auth:sanctum'])->group(function () {
     Route::DELETE('remove-from-user-cart',[App\Http\Controllers\CartController::class,'removeFromUserCart']);
     Route::DELETE('empty-user-cart',[App\Http\Controllers\CartController::class,'emptyUserCart']);
     // ~~~~~ end of Cart routes ~~~~~
+    
+    // ~~~~~ Orders routes ~~~~~
+    Route::post('make-order',[App\Http\Controllers\OrdersController::class,'makeOrder']);
+    Route::get('get-user-orders',[App\Http\Controllers\OrdersController::class,'getUserOrders']);
+    // ~~~~~ end of Cart routes ~~~~~
 
     // ~~~~~ categories routes ~~~~~
     Route::get('get-categories',[App\Http\Controllers\CategoriesController::class,'getCategories']);
